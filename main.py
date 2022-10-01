@@ -4,8 +4,14 @@ from tqdm import tqdm
 import cv2, math, os, glob
 import moviepy.editor as moviepy
 
-# By The Autonomous Btw ;) #
-# DELETE FRAMES BEFORE RUNNING THE SCRIPT #
+######## Requirements #######
+#     pip install pillow    #
+# pip install opencv-python #
+#    pip install moviepy    #
+#      pip install tqdm     #
+#############################
+
+# By TheAutonomous Btw ;) #
 
 if not os.path.isdir("WorkingFolder"):
     os.mkdir("WorkingFolder")
