@@ -13,6 +13,30 @@ import moviepy.editor as moviepy
 
 # By TheAutonomous Btw ;) #
 
+# EDIT THIS IF YOU WANT #
+
+class CustomMath(): # Just Some Custom Math Equations
+    def RootPI(x):
+        return math.cosh(x**2)*math.pi
+
+def MathFunctionToEnclose(cfunc, x, z):
+    # This Is What Function Is Going To Be Run For Every Frame
+    # z is the current frame
+    # x is x in the frame
+    # dont mind cfunc it is what function is currently being used to map out the math
+    return math.sqrt(cfunc(x**2))*z
+
+ScreenX = 1920 # Resolution Size
+XPrecision = 2  # You Can Mess With This Default Is 2
+YPrecision = 20 # You Can Mess With This Default Is 20
+StartFrameCount = -100 # What Frame To Start With
+EndFrameCount = 100 # What Frame To Stop At
+DoInvertedAxes = True # Do An Inverse Of The Math Function
+MathFunctionsToUse = [math.sin, math.cos, math.tan, CustomMath.RootPI] # Functions You Wanna Use For Math
+FPS = 30.0 # The Frames Per Second Of The Final Video Default Is 30.0
+
+# READ ONLY I DONT RECOMMEND DELETING STUFF #
+
 if not os.path.isdir("WorkingFolder"):
     os.mkdir("WorkingFolder")
 
@@ -24,24 +48,12 @@ except:
 
 print("Frames Folder Refreshed")
 
-class CustomMath():
-    def RootPI(x):
-        return math.cosh(x**2)*math.pi
+ScreenY = ScreenX
+PixelSize = math.floor(ScreenX/100)
+YDistort = math.floor(ScreenX/2)+YPrecision
 
 def GenerateFrame(ScreenX, ScreenY):
     return Image.new('RGB', (ScreenX, ScreenY))
-
-ScreenX = 1920
-ScreenY = ScreenX
-PixelSize = math.floor(ScreenX/100)
-YPrecision = 20
-XPrecision = 2
-YDistort = math.floor(ScreenX/2)+YPrecision
-EndFrameCount = 1000
-StartFrameCount = 0
-DoInvertedAxes = True
-MathFunctionsToUse = [math.sin, math.cos, math.tan, CustomMath.RootPI]
-FPS = 60.0
 
 def GraphPoint(image, posx, posy, squaresize):
     for x in range(squaresize):
@@ -58,9 +70,6 @@ def toPositive(num):
         return num*-1
     else:
         return num
-
-def MathFunctionToEnclose(cfunc, x, z):
-    return math.sqrt(cfunc(x**2))*z
 
 def HandleFrames():
     PDone = 0
