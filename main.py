@@ -7,11 +7,14 @@ import moviepy.editor as moviepy
 # By The Autonomous Btw ;) #
 # DELETE FRAMES BEFORE RUNNING THE SCRIPT #
 
+if not os.path.isdir("WorkingFolder"):
+    os.mkdir("WorkingFolder")
+
 try:
-    os.remove(__file__.replace("main.py", "").replace("\\", "/") + "WorkingFolder/Frames")
-    os.mkdir(__file__.replace("main.py", "").replace("\\", "/") + "WorkingFolder/Frames")
+    os.remove("WorkingFolder/Frames")
+    os.mkdir("WorkingFolder/Frames")
 except:
-    os.mkdir(__file__.replace("main.py", "").replace("\\", "/") + "WorkingFolder/Frames")
+    os.mkdir("WorkingFolder/Frames")
 
 print("Frames Folder Refreshed")
 
